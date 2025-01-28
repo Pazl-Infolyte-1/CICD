@@ -1,0 +1,20 @@
+version: "3.7"
+services:
+  flask-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: flask-app
+    ports:
+      - "5000:5000"
+    environment:
+      REPO_URL: "https://github.com/Pazl-Infolyte-1/CICD.git"
+      BRANCH_NAME: "main"
+      PROJECT_DIR: "/home/CICD"
+      GIT_CREDENTIALS_ID: "github-credentials"
+      EMAIL_FROM: "jenkins@pazl.info"
+      EMAIL_TO: "ananda.s@pazl.info"
+      SMTP_SERVER: "smtp.gmail.com"
+      SMTP_PORT: 587
+      SMTP_USERNAME: "sanjay@pazl.in"
+      SMTP_PASSWORD: "hecivtisnkjyufqh"
