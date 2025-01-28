@@ -60,6 +60,7 @@ def github_webhook():
 
         # Get the latest commit logs
         commit_logs = execute_command("git log --oneline -n 10", cwd=PROJECT_DIR)
+        formatted_commit_logs = commit_logs.replace('\n', '<br>')
 
         # Build and start Docker containers
         execute_command("docker-compose build", cwd=PROJECT_DIR)
@@ -70,7 +71,7 @@ def github_webhook():
             subject=f"Build Success: BUZZ-APP-BACK-END on {BRANCH_NAME}",
             body=f"""
                 <p>The latest code has been pulled, and Docker containers have been successfully built and started.</p>
-                <p><b>Commit Details:</b><br>{commit_logs.replace('\\n', '<br>')}</p>
+                <p><b>Commit Details:</b><br>{formatted_commit_logs}</p>
             """
         )
         return jsonify({"message": "Build and deployment successful"}), 200
@@ -82,7 +83,6 @@ def github_webhook():
             body=f"<p>Error: {str(e)}</p>"
         )
         return jsonify({"message": f"Build failed: {str(e)}"}), 500
-
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=6000)
