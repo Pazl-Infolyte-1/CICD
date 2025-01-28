@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
     container_name: flask-app
     ports:
-      - "5000:5000"
+      - "6000:6000"
     environment:
       REPO_URL: "https://github.com/Pazl-Infolyte-1/CICD.git"
       BRANCH_NAME: "main"
