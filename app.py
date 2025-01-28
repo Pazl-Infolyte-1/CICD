@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 # Configuration (can also be moved to a separate file like `config/settings.py`)
 REPO_URL = os.getenv("REPO_URL", "https://github.com/Pazl-Infolyte-1/BUZZ-APP-BACK-END.git")
-BRANCH_NAME = os.getenv("BRANCH_NAME", "development")
+BRANCH_NAME = os.getenv("BRANCH_NAME", "main")
 PROJECT_DIR = os.getenv("PROJECT_DIR", "/home/BUZZ-APP-BACK-END")
 EMAIL_FROM = os.getenv("EMAIL_FROM", "jenkins@pazl.info")
 EMAIL_TO = os.getenv("EMAIL_TO", "ananda.s@pazl.info")
